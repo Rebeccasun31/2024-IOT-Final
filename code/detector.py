@@ -11,7 +11,7 @@ fgbg = cv2.createBackgroundSubtractorMOG2()
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
 area_threshold = 5000
 
-def human_detecter():
+def human_detector():
     ret, frame = cap.read()
     if not ret:
         print('read camera error')
@@ -30,7 +30,7 @@ def human_detecter():
     return human_detected
 
 
-def fall_detecter():
+def fall_detector():
     ret, frame = cap.read()
     if not ret:
         print('read camera error')

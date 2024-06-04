@@ -1,6 +1,6 @@
 import time, random
 import DAN
-from detecter import human_detecter, fall_detecter
+from detector import human_detector, fall_detector
 
 ServerURL = 'https://2.iottalk.tw'
 Reg_addr = str(random.randint(100, 300)) # if None, Reg_addr = MAC address
@@ -17,9 +17,9 @@ fall_detected = 0
 while True:
     try:
         if not human_detected:
-            human_detected = human_detecter()   # First, try to detect human
+            human_detected = human_detector()   # First, try to detect human
         else:
-            if fall_detecter():                 # Then, detect falling
+            if fall_detector():                 # Then, detect falling
                 fall_detected += 1              # Count falling times to avoid error detection
 
             print(fall_detected)
