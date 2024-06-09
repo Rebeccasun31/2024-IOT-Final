@@ -1,7 +1,6 @@
 import time, random, requests
 import DAN
 from detector import human_detector, fall_detector
-from LineNotify import notify
 
 ServerURL = 'https://2.iottalk.tw'
 Reg_addr = str(random.randint(100, 300)) # if None, Reg_addr = MAC address
@@ -22,13 +21,16 @@ while True:
         else:
             if fall_detector():                 # Then, detect falling
                 fall_detected += 1              # Count falling times to avoid error detection
+            else:
+                fall_detected -= 0.5
+                if fall_detected < 0:
+                    fall_detected = 0
 
             print(fall_detected)
             if fall_detected >= 10:
                 msg = 'FALL DETECTED!!!'
                 print(msg)
                 DAN.push ('Dummy_Sensor', msg) # Push warning message
-                notify(msg)
                 fall_detected = 0
 
     except Exception as e:
