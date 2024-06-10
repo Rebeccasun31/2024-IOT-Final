@@ -19,7 +19,8 @@ def human_detector():
     
     human_detected = False
 
-    rects, _ = hog.detectMultiScale(frame, winStride=(8,8) ,scale=1.1, useMeanshiftGrouping=False)
+    rects, _ = hog.detectMultiScale(frame, winStride=(8,8), padding=(8,8),
+                                        scale=1.05, useMeanshiftGrouping=False)
 
     for x,y,w,h in rects:   # If detected
         frame = cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,255), 2)
@@ -66,3 +67,7 @@ def fall_detector():
     cv2.imshow('Frame', frame)
     cv2.waitKey(33)
     return fall_detected
+
+if __name__ == "__main__":
+    while True:
+        fall_detector()
