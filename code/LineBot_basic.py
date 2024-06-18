@@ -16,8 +16,8 @@ DAN.profile['dm_name']='LineBot'
 DAN.profile['df_list']=['Msg-I', 'Msg-O',]
 DAN.profile['d_name']= "SCR."+ str( random.randint(300,599 ) ) +"_LineBot" # None
 
-line_bot_api = LineBotApi('BskGwdQfKKsHEMFj+Hs6pzjjwPbyITUXAJN+slaGFt4BX7Uqs5xyA49lqKUidUIBeAxUj9IqG5SSVp+ysgRz/1olNhhpDXbaJAFO6joigP7WnxA3vOyA7UqRT3Xnlamq32pPiF1L/PmHa7CTsv45lgdB04t89/1O/w1cDnyilFU=') #LineBot's Channel access token
-handler = WebhookHandler('61eb425c95b7388def6376c0f03e3d1f')        #LineBot's Channel secret
+line_bot_api = LineBotApi('token')  #LineBot's Channel access token
+handler = WebhookHandler('secret')  #LineBot's Channel secret
 user_id_set=set()                                         #LineBot's Friend's user id 
 app = Flask(__name__)
 DAN.device_registration_with_retry(ServerURL, Reg_addr)
